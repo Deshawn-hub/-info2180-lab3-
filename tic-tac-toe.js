@@ -12,6 +12,8 @@
     const squares = document.querySelectorAll("#board div");
     const titles = Array.from(document.querySelectorAll(".square"));
     const word = document.getElementById("status");
+    const btn = document.querySelector(".btn")
+    console.log(btn);
     // Loop through each div and add the 'square' class
     squares.forEach(square => {
         square.classList.add("square");
@@ -92,6 +94,22 @@
         
     }
 
+    function resetgame(){
+        options= ["","","","","","","","",""];
+        gameactive = true;
+        currentPlayer = playerx;
+        squares.forEach(square => {
+            square.textContent = "";
+            square.classList.remove("X", "O");
+        });
+
+        word.textContent = "Move your mouse over a square and click to play an X or an O.";
+        word.classList.remove("you-won");
+
+        
+
+    }
+
 
     
 
@@ -101,7 +119,15 @@
         square.addEventListener("click", handleClick);
         square.addEventListener("mouseover", mousehover);
         square.addEventListener("mouseout",not_mousehover_)
+        
     });
+
+
+
+    btn.addEventListener("click",resetgame);
+
+
+
     
 
 
