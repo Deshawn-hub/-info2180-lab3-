@@ -1,4 +1,4 @@
-//let word = document.getElementById("status");
+
 //console.log(word)
 //word.style.color = "pink";
 //word.addEventListener("click", () => {
@@ -11,6 +11,7 @@
      //select all the divs insode the board element 
     const squares = document.querySelectorAll("#board div");
     const titles = Array.from(document.querySelectorAll(".square"));
+    const word = document.getElementById("status");
     // Loop through each div and add the 'square' class
     squares.forEach(square => {
         square.classList.add("square");
@@ -50,9 +51,18 @@
         square.textContent = currentPlayer;
         square.classList.add(currentPlayer);
 
-        if(currentPlayer == playerx){
+
+        if (checkWin()){
+            winsStat(currentPlayer);
+            gameactive = false; 
+        }else if (options.every(option => option !== "")) {
+            updateStatus("It's a tie!");
+            gameactive = false;
+        }
+            if(currentPlayer == playerx){
             currentPlayer = playero;
-        } else currentPlayer = playerx
+        } else currentPlayer = playerx;
+
 
     }
 
@@ -68,6 +78,18 @@
 
     function not_mousehover_ (event){
         event.target.classList.remove("hover");
+    }
+    //check for a winner or a tie 
+    function winsStat(message){
+
+        if(message == "It's a tie!")
+            word.textContent = message;
+        else{
+            
+        word.textContent = `Congratulations! ${message} is the Winner!`;
+        }
+        word.classList.add("you-won");
+        
     }
 
 
