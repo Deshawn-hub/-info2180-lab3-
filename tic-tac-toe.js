@@ -13,7 +13,7 @@
     const titles = Array.from(document.querySelectorAll(".square"));
     // Loop through each div and add the 'square' class
     squares.forEach(square => {
-        square.classList.add("square")
+        square.classList.add("square");
 
 
     })
@@ -62,9 +62,24 @@
         });
     }
 
+    function mousehover (event){
+        event.target.classList.add("hover");
+    }
+
+    function not_mousehover_ (event){
+        event.target.classList.remove("hover");
+    }
 
 
-    squares.forEach(square => square.addEventListener("click", handleClick));
+    
+
+
+    // put fuctions to the squares 
+    squares.forEach(square => {
+        square.addEventListener("click", handleClick);
+        square.addEventListener("mouseover", mousehover);
+        square.addEventListener("mouseout",not_mousehover_)
+    });
     
 
 
